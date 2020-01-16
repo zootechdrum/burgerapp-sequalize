@@ -1,0 +1,13 @@
+<li class="indi-burger text-center">
+	{{burger_name}}
+	<div>
+	<button  data-id="{{id}}" data-eaten="{{eaten}}" {{#if devoured}} class="statusOfBurger btn devoured" data-devouredState="{{devoured}}" disabled{{else}}
+	class="statusOfBurger btn not-devoured"  
+	{{/if}}>
+		{{#if devoured}}Eaten{{else}}Devour It!{{/if}}
+	</button>
+
+	<button class="delete-burger btn" data-id="{{this.id}}">DELETE BURGER</button>
+	</div>
+
+</li>
