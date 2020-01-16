@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
-var db = require("../models/burger");
+var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", async function(req, res) {
@@ -13,16 +13,18 @@ router.get("/", async function(req, res) {
   //   res.json(dbAuthor);
   // });
 
-  await db.burger.findAll(() {
-    console.log(data)
-  })
+    const users = await db.Burger.findAll()
+    console.log(users)
+
+  }) 
+
 
   //   var hbsObject = {
   //     burger : data
   //   };
   //   res.render("index", hbsObject);
   // });
-});
+
 
 // router.post("/api/burger", function(req, res) {
 //   burger.create(["burger_name"], [req.body.name], function(result) {
