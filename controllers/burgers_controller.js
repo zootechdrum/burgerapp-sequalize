@@ -13,8 +13,9 @@ router.get("/", async function(req, res) {
   //   res.json(dbAuthor);
   // });
 
-    const users = await db.Burger.findAll()
-    console.log(users)
+   await db.burgers.findAll({}).then(function(data) {
+    console.log(data)
+   })
 
   }) 
 
