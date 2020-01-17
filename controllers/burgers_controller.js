@@ -6,25 +6,24 @@ var router = express.Router();
 var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", async function(req, res) {
-  // db.Author.findAll({
-  //   include: [db.Post]
-  // }).then(function(dbAuthor) {
-  //   res.json(dbAuthor);
-  // });
+router.get("/", function(req, res) {
 
-   await db.burgers.findAll({}).then(function(data) {
-    console.log(data)
-   })
+  const arr = []
 
+    db.burgers.findAll({}).then(function(data) {
+      
+      for(var i = 0; i < data.length; i++){
+        arr.push(data[i].dataValues)
+        console.log(arr)
+      }
+
+      var hbsObject = {
+        burger : arr
+      }
+
+      res.render("index", hbsObject);
+    });
   }) 
-
-
-  //   var hbsObject = {
-  //     burger : data
-  //   };
-  //   res.render("index", hbsObject);
-  // });
 
 
 // router.post("/api/burger", function(req, res) {
