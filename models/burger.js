@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     devoured: {
-      type: DataTypes.BOOLEAN
+      flag: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: true }
     }
   },
 {
