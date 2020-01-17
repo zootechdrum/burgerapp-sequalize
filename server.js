@@ -18,9 +18,14 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/burgers_controller.js");
+// var routes = require("./controllers/burgers_controller.js");
+app.use('/', require('./controllers/html-routes'));
+app.use('/burgers',require('./controllers/burgers_controller'));
 
-app.use(routes);
+// app.use('/api/profile', require('./routes/api/profile'));
+// app.use('/api/posts', require('./routes/api/posts'));
+
+// app.use(routes);
 
 // db.sequelize.sync({ force: true }).then(function() {
 
