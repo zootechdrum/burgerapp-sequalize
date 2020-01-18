@@ -72,4 +72,16 @@ function handleAuthorFormSubmit(event) {
     userContainer.append(alertDiv);
   }
 
+  // Function for handling what happens when the delete button is pressed
+  function handleDeleteButtonPress() {
+    var listItemData = $(this).parent("td").parent("tr")
+    var id = listItemData.id;
+    $.ajax({
+      method: "DELETE",
+      url: "/api/authors/" + id
+    })
+      .then(getUsers);
+  }
+  
+
 })
