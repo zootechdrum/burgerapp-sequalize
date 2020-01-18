@@ -1,8 +1,8 @@
 $(document).ready(function() {
   // Getting references to the name input and author container, as well as the table body
   var nameInput = $("#user-name");
-  var authorList = $("tbody");
-  var authorContainer = $(".user-container");
+  var userList = $("tbody");
+  var userContainer = $(".user-container");
 
 $(document).on("submit", "#user-form", handleAuthorFormSubmit);
 
@@ -30,11 +30,39 @@ function handleAuthorFormSubmit(event) {
       console.log(data)
       var rowsToAdd = [];
       for (var i = 0; i < data.length; i++) {
-        rowsToAdd.push(createAuthorRow(data[i]));
+        rowsToAdd.push(createUserRow(data[i]));
       }
-      renderAuthorList(rowsToAdd);
+      renderUserList(rowsToAdd);
       nameInput.val("");
     });
+  }
+
+  function createUserRow(userData) {
+    var newTr = $("<tr>");
+    newTr.data("author", userData);
+    newTr.append("<td>" + userData.name + "</td>");
+    if (userData.burgers) {
+      newTr.append("<td> " + userData.burgers.length + "</td>");
+    } else {
+      newTr.append("<td>0</td>");
+    }
+    newTr.append("<td><a href='/blog?author_id=" + userData.id + "'>Go to Posts</a></td>");
+    newTr.append("<td><a href='/cms?author_id=" + userData.id + "'>Create a Post</a></td>");
+    newTr.append("<td><a style='cursor:pointer;color:red' class='delete-author'>Delete Author</a></td>");
+    return newTr;
+  }
+
+  //   // A function for rendering the list of authors to the page
+  function renderUserList(rows) {
+    userList.children().not(":last").remove();
+    userContainer.children(".alert").remove();
+    if (rows.length) {
+      console.log(rows);
+      userList.prepend(rows);
+    }
+    else {
+      renderEmpty();
+    }
   }
 
 })
