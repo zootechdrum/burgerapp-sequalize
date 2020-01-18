@@ -7,6 +7,8 @@ $(document).ready(function() {
 $(document).on("submit", "#user-form", handleAuthorFormSubmit);
 $(document).on("click", ".delete-user", handleDeleteButtonPress);
 
+getUsers();
+
 function handleAuthorFormSubmit(event) {
     event.preventDefault();
     // Don't do anything if the name fields hasn't been filled out
