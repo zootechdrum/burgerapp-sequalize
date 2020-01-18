@@ -1,16 +1,20 @@
 var db = require("../models");
 
-//   app.get("/api/authors", function(req, res) {
-//     // Here we add an "include" property to our options in our findAll query
-//     // We set the value to an array of the models we want to include in a left outer join
-//     // In this case, just db.Post
-//     db.Author.findAll({
-//       include: [db.Post]
-//     }).then(function(dbAuthor) {
-//       console.log(dbAuthor)
-//       res.json(dbAuthor);
-//     });
-//   });
+var express = require("express");
+
+var router = express.Router();
+
+  router.get("/", function(req, res) {
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.User.findAll({
+      include: [ {model:db.Burger, as: "burgers"}]
+    }).then(function(dbUser) {
+      console.log(dbUser)
+      res.json(dbUser);
+    });
+  });
 
 //   app.get("/api/authors/:id", function(req, res) {
 //     // Here we add an "include" property to our options in our findOne query
@@ -26,7 +30,7 @@ var db = require("../models");
 //     });
 //   });
 
-  app.post("/api/users", function(req, res) {
+  router.post("/", function(req, res) {
     db.User.create(req.body).then(function(dbAuthor) {
       console.log(dbAuthor)
       res.json(dbAuthor);
@@ -42,4 +46,4 @@ var db = require("../models");
 //       res.json(dbAuthor);
 //     });
 //   });
-
+module.exports = router;

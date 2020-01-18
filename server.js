@@ -21,6 +21,7 @@ app.set("view engine", "handlebars");
 // var routes = require("./controllers/burgers_controller.js");
 app.use('/', require('./controllers/html-routes'));
 app.use('/burgers',require('./controllers/burgers_controller'));
+app.use("/api/users",require('./controllers/user-api-routes'));
 
 // app.use('/api/profile', require('./routes/api/profile'));
 // app.use('/api/posts', require('./routes/api/posts'));
