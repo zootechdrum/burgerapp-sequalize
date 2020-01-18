@@ -57,7 +57,6 @@ function handleAuthorFormSubmit(event) {
     userList.children().not(":last").remove();
     userContainer.children(".alert").remove();
     if (rows.length) {
-      console.log(rows);
       userList.prepend(rows);
     }
     else {
@@ -75,7 +74,6 @@ function handleAuthorFormSubmit(event) {
   // Function for handling what happens when the delete button is pressed
   function handleDeleteButtonPress() {
     var listItemData = $(this).parent("td").parent("tr").data("user")
-    console.log(listItemData)
     var id = listItemData.id;
     $.ajax({
       method: "DELETE",
