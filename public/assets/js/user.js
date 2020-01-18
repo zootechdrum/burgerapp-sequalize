@@ -20,4 +20,10 @@ function handleAuthorFormSubmit(event) {
         .trim()
     });
   }
+
+  function upsertUser(authorData) {
+    $.post("/api/users", authorData)
+      .then(getAuthors);
+  }
+
 })
