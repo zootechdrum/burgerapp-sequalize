@@ -37,13 +37,13 @@ var router = express.Router();
     });
   });
 
-//   app.delete("/api/authors/:id", function(req, res) {
-//     db.Author.destroy({
-//       where: {
-//         id: req.params.id
-//       }
-//     }).then(function(dbAuthor) {
-//       res.json(dbAuthor);
-//     });
-//   });
+  router.delete("/:id", function(req, res) {
+    db.User.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
 module.exports = router;

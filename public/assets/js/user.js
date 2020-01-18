@@ -5,6 +5,7 @@ $(document).ready(function() {
   var userContainer = $(".user-container");
 
 $(document).on("submit", "#user-form", handleAuthorFormSubmit);
+$(document).on("click", ".delete-user", handleDeleteButtonPress);
 
 function handleAuthorFormSubmit(event) {
     event.preventDefault();
@@ -39,7 +40,7 @@ function handleAuthorFormSubmit(event) {
 //Creates row for users
   function createUserRow(userData) {
     var newTr = $("<tr>");
-    newTr.data("author", userData);
+    newTr.data("user", userData);
     newTr.append("<td>" + userData.name + "</td>");
     if (userData.burgers) {
       newTr.append("<td> " + userData.burgers.length + "</td>");
@@ -47,8 +48,7 @@ function handleAuthorFormSubmit(event) {
       newTr.append("<td>0</td>");
     }
     newTr.append("<td><a href='/blog?author_id=" + userData.id + "'>Go to Posts</a></td>");
-    newTr.append("<td><a href='/cms?author_id=" + userData.id + "'>Create a Post</a></td>");
-    newTr.append("<td><a style='cursor:pointer;color:red' class='delete-author'>Delete Author</a></td>");
+    newTr.append("<td><a style='cursor:pointer;color:red' class='delete-user'>Delete User</a></td>");
     return newTr;
   }
 
@@ -74,11 +74,12 @@ function handleAuthorFormSubmit(event) {
 
   // Function for handling what happens when the delete button is pressed
   function handleDeleteButtonPress() {
-    var listItemData = $(this).parent("td").parent("tr")
+    var listItemData = $(this).parent("td").parent("tr").data("user")
+    console.log(listItemData)
     var id = listItemData.id;
     $.ajax({
       method: "DELETE",
-      url: "/api/authors/" + id
+      url: "/api/users/" + id
     })
       .then(getUsers);
   }
