@@ -19,9 +19,9 @@ $(document).ready(function () {
       userId = "/?user_id=" + userId;
     }
     $.get("/api/burgers" + userId, function(data) {
+      console.log(data)
       data = data;
       if (!data || !data.length) {
-        console.log("Hellow")
       }
       else {
         console.log("nothing")

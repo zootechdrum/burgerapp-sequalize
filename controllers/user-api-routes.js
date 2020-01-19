@@ -11,7 +11,6 @@ var router = express.Router();
     db.User.findAll({
       include: [ {model:db.Burger, as: "burgers"}]
     }).then(function(dbUser) {
-      console.log(dbUser)
       res.json(dbUser);
     });
   });
@@ -19,7 +18,6 @@ var router = express.Router();
 
   router.post("/", function(req, res) {
     db.User.create(req.body).then(function(dbAuthor) {
-      console.log(dbAuthor)
       res.json(dbAuthor);
     });
   });
