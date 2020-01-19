@@ -49,7 +49,7 @@ function handleAuthorFormSubmit(event) {
     } else {
       newTr.append("<td>0</td>");
     }
-    newTr.append("<td><a href='/blog?author_id=" + userData.id + "'>Go to Posts</a></td>");
+    newTr.append("<td><a href='/burgers?user_id=" + userData.id + "'>Go to Burgers</a></td>");
     newTr.append("<td><a style='cursor:pointer;color:red' class='delete-user'>Delete User</a></td>");
     return newTr;
   }
