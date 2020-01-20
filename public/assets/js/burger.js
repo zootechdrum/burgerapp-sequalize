@@ -4,39 +4,17 @@ $(document).ready(function () {
     burger: [{id:1,burger_name:"Mcdonald",devoured:false}]
   };
 
-
-
   var url = window.location.search;
   var userId;
+
   if (url.indexOf("?user_id=") !== -1) {
     userId = url.split("=")[1];
     
-    // getBurgers(userId);
   }
   // If there's no authorId we just get all posts as usual
   else {
     console.log("h")
   }
-
-    // This function grabs posts from the database and updates the view
-  function getBurgers(user) {
-    userId = user || "";
-    if (userId) {
-      userId = "/?user_id=" + userId;
-    }
-    $.get("/api/burgers" + userId, function(data) {
-      console.log(data)
-      data = data;
-      if (!data || !data.length) {
-      }
-      else {
-        console.log("nothing")
-      }
-    });
-  }
-
-
-
 
 // //Below functions hide elements after initial delete
 //     function cuteHide(el) {
