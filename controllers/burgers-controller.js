@@ -9,7 +9,7 @@ var hbsObject = {}
 
 
     router.get("/", function(req, res) {
-
+      console.log("hti")
     var query = {};
     console.log(req.query.user_id)
     if (req.query.user_id) {
@@ -23,7 +23,8 @@ var hbsObject = {}
          hbsObject = {
           burger : [dbBurger[0].dataValues]
         };
-          res.render("../views/index.handlebars",hbsObject)
+        res.redirect('www.google.com')
+          // res.render("../views/index.handlebars",hbsObject)
 
     })
 

@@ -89,7 +89,7 @@ $(document).ready(function () {
       }).then(
         function(data) {
           console.log("Called")
-          location.reload()          
+          location.reload("/burgers")          
         })
 
         });
