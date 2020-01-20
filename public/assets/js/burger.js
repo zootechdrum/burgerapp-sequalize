@@ -63,27 +63,27 @@ $(document).ready(function () {
 //       );
 //     });
 
-//     $(".burger-form").on("submit", function(event) {
+    $(".burger-form").on("submit", function(event) {
 
-//       event.preventDefault()
-//       // Make sure to preventDefault on a submit event.
-//       var newBurger = {
-//         name: $("#burger").val().trim()
-//       };
+      event.preventDefault()
+      // Make sure to preventDefault on a submit event.
+      var newBurger = {
+        name: $("#burger").val().trim()
+      };
 
       
   
-//       //Send the POST request.
-//       $.ajax("/api/burger", {
-//         type: "POST",
-//         data: newBurger
-//       }).then(
-//         function(data) {
-//           $("#burger").val("")
-//         })
-//         location.reload();
-//         }
-//       );
+      //Send the POST request.
+      $.ajax("/api/burger", {
+        type: "POST",
+        data: newBurger
+      }).then(
+        function(data) {
+          $("#burger").val("")
+        })
+        location.reload();
+        }
+      );
     
 
   
