@@ -1,11 +1,17 @@
 $(document).ready(function () {
 
+  hbsObject = {
+    burger: [{id:1,burger_name:"Mcdonald",devoured:false}]
+  };
+
+
+
   var url = window.location.search;
   var userId;
   if (url.indexOf("?user_id=") !== -1) {
     userId = url.split("=")[1];
     
-    getBurgers(userId);
+    // getBurgers(userId);
   }
   // If there's no authorId we just get all posts as usual
   else {
@@ -28,6 +34,8 @@ $(document).ready(function () {
       }
     });
   }
+
+
 
 
 // //Below functions hide elements after initial delete
@@ -67,23 +75,24 @@ $(document).ready(function () {
 
       event.preventDefault()
       // Make sure to preventDefault on a submit event.
+      userId = url.split("=")[1];
       var newBurger = {
-        name: $("#burger").val().trim()
+        burger_name: $("#burger").val().trim(),
+        UserId:userId
       };
-
       
   
       //Send the POST request.
-      $.ajax("/api/burger", {
+      $.ajax("/api/burgers", {
         type: "POST",
         data: newBurger
       }).then(
         function(data) {
-          $("#burger").val("")
+          console.log("Called")
+          location.reload()          
         })
-        location.reload();
-        }
-      );
+
+        });
     
 
   

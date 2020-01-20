@@ -1,18 +1,22 @@
 var express = require("express");
 var db = require("./models");
 var PORT = process.env.PORT || 8080;
+var path = require('path')
 
 var app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(express.static(path.join(__dirname, '/public')));
 // Set Handlebars.
 var exphbs = require("express-handlebars");
+
+
+
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -22,6 +26,7 @@ app.set("view engine", "handlebars");
 app.use('/', require('./controllers/html-routes'));
 app.use('/api/burgers',require('./controllers/burgers-controller'));
 app.use("/api/users",require('./controllers/user-api-routes'));
+
 
 // app.use('/api/profile', require('./routes/api/profile'));
 // app.use('/api/posts', require('./routes/api/posts'));

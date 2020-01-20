@@ -8,8 +8,11 @@ router.get("/", function(req, res) {
     }) 
 
     router.get("/burgers", function(req, res) {
+        hbsObject = {
+            burger: [{id:1,burger_name:"Mcdonald",devoured:false}]
+          };
 
-        res.render("index");
+        res.render("index",hbsObject);
         }) 
 
 module.exports = router;

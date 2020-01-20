@@ -30,7 +30,6 @@ function handleAuthorFormSubmit(event) {
 
   function getUsers() {
     $.get("/api/users", function(data) {
-      console.log(data)
       var rowsToAdd = [];
       for (var i = 0; i < data.length; i++) {
         rowsToAdd.push(createUserRow(data[i]));
