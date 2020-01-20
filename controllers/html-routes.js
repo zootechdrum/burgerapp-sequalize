@@ -10,6 +10,7 @@ router.get("/", function(req, res) {
     }) 
 
 router.get("/burgers", function(req, res) {
+    var burgerInfo = []
     var query = {};
     console.log(req.query.user_id)
     if (req.query.user_id) {
@@ -21,8 +22,12 @@ router.get("/burgers", function(req, res) {
       include: [db.User]
     }).then(function(dbBurger) {
         if(dbBurger.length != 0){
+        
+        for(var i = 0; i < dbBurger.length; i++){
+            burgerInfo.push(dbBurger[i].dataValues)
+        }
             hbsObject = {
-                burger : [dbBurger[0].dataValues]
+                burger : burgerInfo
             }
         console.log(dbBurger[0].dataValues)
     }else{
