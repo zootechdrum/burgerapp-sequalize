@@ -11,7 +11,6 @@ router.get("/", function (req, res) {
 router.get("/burgers", function (req, res) {
     var burgerInfo = []
     var query = {};
-    console.log(req.query.user_id)
     if (req.query.user_id) {
         query.userId = req.query.user_id;
     }
@@ -28,7 +27,6 @@ router.get("/burgers", function (req, res) {
             hbsObject = {
                 burger: burgerInfo
             }
-            console.log(dbBurger[0].dataValues)
         } else {
             hbsObject = {
                 burger: []

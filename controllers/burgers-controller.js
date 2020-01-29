@@ -8,27 +8,7 @@ var db = require("../models");
 var hbsObject = {}
 
 
-    router.get("/", function(req, res) {
-      console.log("hti")
-    var query = {};
-    console.log(req.query.user_id)
-    if (req.query.user_id) {
-      query.userId = req.query.user_id;
-    }
-    db.Burger.findAll({
-    
-      where: query,
-      include: [db.User]
-    }).then(function(dbBurger) {
-         hbsObject = {
-          burger : [dbBurger[0].dataValues]
-        };
-        res.redirect('www.google.com')
-          // res.render("../views/index.handlebars",hbsObject)
 
-    })
-
-  })
 
 //   app.get('/render', function(req, res) {
 //     res.render('index', {title: 'res vs app render'}, function(err, html) {
@@ -39,8 +19,9 @@ var hbsObject = {}
 
 
 
-  // POST route for saving a new post
+  // POST route for saving a new Burger
   router.post("/", function(req, res) {
+    console.log("hit")
     db.Burger.create(req.body).then(function(dbBurger) {
       res.json(dbBurger)
   });
