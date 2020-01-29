@@ -8,12 +8,25 @@ var db = require("../models");
 var hbsObject = {}
 
 
+router.put("/:id", function(req, res) {
+  console.log(req.body)
+
+  db.Burger.update({
+    devoured: req.body.burgerState
+  }, {
+    where: {id: req.body.id}
+  }
+
+  ).then(function(updatedBurger) {
+    console.log(updatedBurger)
+    res.json(updatedBurger)
+  })
+})
 
 
   // Delete route for Deleting a new Burger
   router.delete("/:id", function(req, res) {
-    console.log(req.params.id)
-    console.log("hit")
+
     db.Burger.destroy({
       where: {
         id: req.params.id

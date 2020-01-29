@@ -26,28 +26,28 @@ $(document).ready(function () {
     }
 
 
-// //Changes state of Burger 
-//     $(".statusOfBurger").on("click", function(event) {
-//       var id = $(this).data("id");
-//       var burgerState = $(this).data("eaten");
-//       console.log(burgerState)
+//sends request to update state of burger 
+    $(".statusOfBurger").on("click", function(event) {
+      var id = $(this).data("id");
+      console.log(id)
+      var burgerState = $(this).data("eaten");
   
-//       var newBurgerState = {
-//         burgerState: burgerState
-//       };
-  
-//       // Send the PUT request.
-//       $.ajax("/api/burger/" + id, {
-//         type: "PUT",
-//         data: newBurgerState
-//       }).then(
-//         function() {
-//           console.log("changed sleep to", newBurgerState);
-//           // Reload the page to get the updated list
-//           location.reload();
-//         }
-//       );
-//     });
+      var newBurgerState = {
+        id: id,
+        burgerState: burgerState
+      };
+      // Send the PUT request.
+      $.ajax("/api/burgers/" + id, {
+        type: "PUT",
+        data: newBurgerState
+      }).then(
+        function(data) {
+          console.log("changed sleep to", data);
+          // Reload the page to get the updated list
+          // location.reload();
+        }
+      );
+    });
 
     $(".burger-form").on("submit", function(event) {
 
