@@ -11,10 +11,6 @@ $(document).ready(function () {
     userId = url.split("=")[1];
     
   }
-  // If there's no authorId we just get all posts as usual
-  else {
-    console.log("h")
-  }
 
 //Below functions hide elements after initial delete
     function cuteHide(el) {
