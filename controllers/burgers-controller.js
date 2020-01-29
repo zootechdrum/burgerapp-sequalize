@@ -17,11 +17,18 @@ var hbsObject = {}
 //     })
 // })
 
+  // POST route for saving a new Burger
+  router.delete("/:id", function(req, res) {
+    console.log(req.body.id)
+    console.log("hit")
+    db.Burger.destroy(req.body).then(function(dbBurger) {
+      res.json(dbBurger)
+  });
+})
 
 
   // POST route for saving a new Burger
   router.post("/", function(req, res) {
-    console.log("hit")
     db.Burger.create(req.body).then(function(dbBurger) {
       res.json(dbBurger)
   });
