@@ -19,9 +19,15 @@ var hbsObject = {}
 
   // POST route for saving a new Burger
   router.delete("/:id", function(req, res) {
-    console.log(req.body.id)
+    console.log(req.params.id)
     console.log("hit")
-    db.Burger.destroy(req.body).then(function(dbBurger) {
+    db.Burger.destroy({
+      where: {
+        id: req.params.id
+      }
+    }
+
+    ).then(function(dbBurger) {
       res.json(dbBurger)
   });
 })

@@ -78,6 +78,7 @@ $(document).ready(function () {
 // //Event Handler when Delete button is pressed
 $(".delete-burger").on("click", function(event) {
     var id = $(this).data("id");
+    console.log(id)
   
     $('.burgersStat').on('click',".delete-burger", function(){
       var el = $(this).closest('.indi-burger');

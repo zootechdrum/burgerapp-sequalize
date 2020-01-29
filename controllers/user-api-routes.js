@@ -23,7 +23,6 @@ var router = express.Router();
   });
 
   router.delete("/:id", function(req, res) {
-    console.log("hit")
     db.User.destroy({
       where: {
         id: req.params.id
