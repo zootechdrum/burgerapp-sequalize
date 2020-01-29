@@ -44,7 +44,7 @@ $(document).ready(function () {
         function(data) {
           console.log("changed sleep to", data);
           // Reload the page to get the updated list
-          // location.reload();
+          location.reload();
         }
       );
     });
