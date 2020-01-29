@@ -1,5 +1,5 @@
 var express = require("express");
-const fetch = require('node-fetch')
+var fetch = require('node-fetch')
 
 var router = express.Router();
 
@@ -10,14 +10,7 @@ var hbsObject = {}
 
 
 
-//   app.get('/render', function(req, res) {
-//     res.render('index', {title: 'res vs app render'}, function(err, html) {
-//         console.log(html);
-//         res.send('done');
-//     })
-// })
-
-  // POST route for saving a new Burger
+  // Delete route for Deleting a new Burger
   router.delete("/:id", function(req, res) {
     console.log(req.params.id)
     console.log("hit")
@@ -26,7 +19,6 @@ var hbsObject = {}
         id: req.params.id
       }
     }
-
     ).then(function(dbBurger) {
       res.json(dbBurger)
   });

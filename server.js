@@ -5,12 +5,11 @@ var path = require('path')
 
 var app = express();
 
-// Serve static content for the app from the "public" directory in the application directory.
-// app.use(express.static(__dirname + '/public'));
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(path.join(__dirname, '/public')));
 // Set Handlebars.
 var exphbs = require("express-handlebars");
@@ -28,18 +27,11 @@ app.use('/api/burgers',require('./controllers/burgers-controller'));
 app.use("/api/users",require('./controllers/user-api-routes'));
 
 
-// app.use('/api/profile', require('./routes/api/profile'));
-// app.use('/api/posts', require('./routes/api/posts'));
-
-// app.use(routes);
-
-db.sequelize.sync({ force: true }).then(function() {
 
     app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });
 
-  
-});
+
 
 
