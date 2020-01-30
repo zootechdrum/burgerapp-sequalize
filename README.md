@@ -12,4 +12,4 @@ In this assignment, I  Sequelized the `Burger` I made using the in my last assig
 6. MySql
 
 ### IMAGE OF CURRENT BURGER EATERS
-![image of burger eaters list]("./public/assets/img/burger-eaters.png")
+![image of burger eaters list](./public/assets/img/burger-eaters.png)
