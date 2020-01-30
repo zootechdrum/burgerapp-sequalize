@@ -20,15 +20,11 @@ Burger.associate = function(models) {
 
   // A Burger can't be created without an Author due to the foreign key constraint
   Burger.belongsTo(models.User, {
-    foreignKey: {
-      allowNull: false
-    }
   });
 };
 
 return Burger;
   };
-
 
 
 
