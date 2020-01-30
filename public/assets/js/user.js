@@ -76,6 +76,7 @@ function handleAuthorFormSubmit(event) {
   function handleDeleteButtonPress() {
     var listItemData = $(this).parent("td").parent("tr").data("user")
     var id = listItemData.id;
+    console.log(id)
     $.ajax({
       method: "DELETE",
       url: "/api/users/" + id
